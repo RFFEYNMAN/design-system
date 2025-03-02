@@ -1,0 +1,249 @@
+/* Основные CSS-переменные для цветовой палитры и шрифтов */
+:root {
+    --color-red: #D72638;      /* Главный Красный */
+    --color-night: #1B1B3A;    /* Ночной Синий */
+    --color-orange: #FF9F1C;   /* Ярко-Оранжевый */
+    --color-mint: #A8E6CF;     /* Мятный */
+    --color-lightgray: #F0F0F0;/* Светлый Серый */
+    --color-darkgray: #333333; /* Тёмный Серый */
+    --color-blue: #3E92CC;     /* Акцентный Голубой */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    --font-accent: 'Pacifico', cursive;
+  }
+  
+  /* Сброс отступов и рамок для всех элементов */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Базовые стили страницы */
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-night); /* Фон страницы (темный синий) */
+    color: var(--color-lightgray);        /* Основной цвет текста (светло-серый) */
+  }
+  
+  /* Стили заголовков */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-lightgray);
+    margin: 0.5em 0;
+  }
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.2em; }
+  
+  /* Акцентный текст с шрифтом Pacifico */
+  .accent-text {
+    font-family: var(--font-accent);
+    color: var(--color-lightgray);
+    font-size: 1.2em;
+  }
+  
+  /* Контейнер основного контента и секций */
+  main {
+    /* Отступ слева для размещения контента справа от бокового меню (на больших экранах) */
+    margin-left: 240px;
+    padding: 1em 2em;
+    /* Фон для основного контента (чуть светлее фона бокового меню для контраста) */
+    background-color: var(--color-darkgray);
+    min-height: 100vh;
+  }
+  /* Ограничение ширины секций для удобочитаемости */
+  .section {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 2em;
+  }
+  /* Скрываем все секции, кроме активной */
+  .section { display: none; }
+  .section.active { display: block; }
+  
+  /* Верхняя панель (для мобильных) */
+  .topbar {
+    display: none; /* Скрыто на больших экранах, будет показано на мобильных через медиа-запрос */
+    background-color: var(--color-night);
+    color: var(--color-lightgray);
+    padding: 0.5em 1em;
+    align-items: center;
+    justify-content: space-between;
+    /* Используем flex-контейнер для выравнивания содержимого */
+  }
+  .sitename {
+    font-family: var(--font-heading);
+    font-size: 1.2em;
+  }
+  /* Кнопка-гамбургер меню */
+  .menu-toggle {
+    font-size: 1.2em;
+    background: none;
+    border: none;
+    color: var(--color-lightgray);
+    cursor: pointer;
+  }
+  
+  /* Боковая панель (меню навигации) слева */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100%;
+    background-color: var(--color-night); /* Фон боковой панели навигации */
+    color: var(--color-lightgray);
+    padding: 1em;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  /* Список пунктов меню */
+  .menu ul { list-style: none; }
+  .menu li { margin: 0.5em 0; }
+  .menu a {
+    display: block;
+    padding: 0.3em 0.5em;
+    color: var(--color-lightgray);
+    text-decoration: none;
+    border-left: 4px solid transparent;
+  }
+  /* Активный пункт меню */
+  .menu a.active {
+    border-left: 4px solid var(--color-red); /* Красная полоса слева для активного пункта */
+    font-weight: bold;
+  }
+  /* Hover-эффект для пунктов меню */
+  .menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный светлый фон при наведении */
+  }
+  
+  /* Стили раздела "Цветовая палитра" */
+  .color-list { margin-top: 1em; }
+  .color-item {
+    margin-bottom: 0.5em;
+    border: 1px solid var(--color-lightgray);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  /* Строка с названием цвета, образцом и стрелкой */
+  .color-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5em;
+    background-color: rgba(255, 255, 255, 0.1); /* Чуть светлый фон для заголовка цвета */
+  }
+  .color-swatch {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: 0.5em;
+    border: 1px solid var(--color-lightgray);
+  }
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+  /* Блок с подробностями цвета (скрыт по умолчанию) */
+  .color-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 0.5em;
+  }
+  /* Состояние открытого блока цвета */
+  .color-item.open .arrow {
+    transform: rotate(90deg); /* Поворот стрелки (▶ становится ▼) */
+  }
+  .color-item.open .color-details {
+    padding: 0.5em;
+    /* max-height устанавливается скриптом до нужной высоты контента */
+  }
+  
+  /* Стили элементов (кнопки, поля ввода, ссылки, цитаты) */
+  .btn {
+    font-family: var(--font-heading);
+    background-color: var(--color-red);
+    color: var(--color-lightgray);
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+  }
+  .btn:hover {
+    background-color: #be202f; /* Темно-красный оттенок при наведении */
+  }
+  .btn:focus {
+    outline: 2px solid var(--color-blue); /* Синяя обводка при фокусе для доступности */
+    outline-offset: 2px;
+  }
+  .input {
+    background-color: var(--color-darkgray);
+    color: var(--color-lightgray);
+    border: 1px solid #555;
+    padding: 0.5em;
+    border-radius: 4px;
+    margin: 0.5em 0;
+    width: 100%;
+  }
+  .input::placeholder {
+    color: #999;
+  }
+  .input:focus {
+    border-color: var(--color-blue); /* Подсветка границы поля голубым при фокусе */
+    outline: none;
+  }
+  .link {
+    color: var(--color-blue);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-blue);
+  }
+  .link:hover {
+    text-decoration: underline;
+  }
+  /* Цитата (blockquote) */
+  blockquote {
+    border-left: 4px solid var(--color-orange);
+    padding: 0.5em 1em;
+    font-style: italic;
+    color: var(--color-lightgray);
+    opacity: 0.8;
+  }
+  blockquote cite {
+    display: block;
+    text-align: right;
+    font-style: normal;
+    opacity: 0.8;
+  }
+  
+  /* Адаптивные стили для мобильных устройств */
+  @media (max-width: 768px) {
+    .topbar {
+      display: flex;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1001;
+    }
+    .sidebar {
+      /* Прячем меню за левым краем экрана (выезжает по необходимости) */
+      transform: translateX(-100%);
+      top: 3.5em; /* Опускаем под верхнюю панель (высота topbar ~3.5em) */
+      height: calc(100% - 3.5em);
+      padding-top: 1em;
+      width: 200px;
+    }
+    .sidebar.open {
+      transform: translateX(0);
+    }
+    main {
+      margin: 0;
+      padding: 4.5em 1em 1em 1em; /* Добавляем отступ сверху под фиксированную верхнюю панель */
+      width: 100%;
+    }
+  }
+  

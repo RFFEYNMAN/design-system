@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дизайн-система – Образец</title>
+  <!-- Подключение шрифтов Montserrat, Open Sans и Pacifico -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400&family=Pacifico&display=swap" rel="stylesheet" />
+  <!-- Подключение файла стилей -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Верхняя панель для мобильного отображения: содержит кнопку меню и название сайта -->
+  <header class="topbar">
+    <button class="menu-toggle">☰ Меню</button>
+    <span class="sitename">Дизайн-Система</span>
+  </header>
+
+  <!-- Боковое меню навигации (фиксированное слева) -->
+  <aside class="sidebar">
+    <nav class="menu">
+      <ul>
+        <li><a href="#" data-target="home" class="active">Главная</a></li>
+        <li><a href="#" data-target="colors">Цветовая палитра</a></li>
+        <li><a href="#" data-target="typography">Типографика</a></li>
+        <li><a href="#" data-target="elements">Стиль элементов</a></li>
+        <li><a href="#" data-target="guidelines">Рекомендации</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Основной контент страницы -->
+  <main>
+    <!-- Главная страница: краткое описание сайта -->
+    <section id="home" class="section active">
+      <h1>Дизайн-Система Проекта</h1>
+      <p>Добро пожаловать в хранилище стилей. Этот сайт содержит рекомендации по дизайну: цветовая палитра, типографика, стили элементов и общие советы для единого оформления приложения.</p>
+      <!-- Акцентный элемент с шрифтом Pacifico для примера -->
+      <p class="accent-text">Пример акцентного текста.</p>
+    </section>
+
+    <!-- Раздел: Цветовая палитра -->
+    <section id="colors" class="section">
+      <h2>Цветовая палитра</h2>
+      <p>Ниже представлен список основных цветов и их применение. Нажмите на название цвета для подробностей.</p>
+      <div class="color-list">
+        <!-- Пример цвета: Главный Красный -->
+        <div class="color-item">
+          <div class="color-name">
+            <span>Главный Красный</span>
+            <span class="color-swatch" style="background-color: #D72638;"></span>
+            <span class="arrow">&#9656;</span> <!-- стрелка, указывающая на раскрытие (▶) -->
+          </div>
+          <div class="color-details">
+            <p><strong>HEX:</strong> #D72638</p>
+            <p>Основной брендовый цвет. Используется для акцентирования главных элементов интерфейса и важных действий пользователя.</p>
+          </div>
+        </div>
+        <!-- Пример цвета: Ночной Синий -->
+        <div class="color-item">
+          <div class="color-name">
+            <span>Ночной Синий</span>
+            <span class="color-swatch" style="background-color: #1B1B3A;"></span>
+            <span class="arrow">&#9656;</span>
+          </div>
+          <div class="color-details">
+            <p><strong>HEX:</strong> #1B1B3A</p>
+            <p>Фоновый цвет для тёмных областей, придающий интерфейсу стиль Obsidian. Идеален для фона страниц и панелей.</p>
+          </div>
+        </div>
+        <!-- Пример цвета: Ярко-Оранжевый -->
+        <div class="color-item">
+          <div class="color-name">
+            <span>Ярко-Оранжевый</span>
+            <span class="color-swatch" style="background-color: #FF9F1C;"></span>
+            <span class="arrow">&#9656;</span>
+          </div>
+          <div class="color-details">
+            <p><strong>HEX:</strong> #FF9F1C</p>
+            <p>Вторичный акцентный цвет. Используется для привлечения внимания к вспомогательным действиям или важной информации.</p>
+          </div>
+        </div>
+        <!-- Пример цвета: Мятный -->
+        <div class="color-item">
+          <div class="color-name">
+            <span>Мятный</span>
+            <span class="color-swatch" style="background-color: #A8E6CF;"></span>
+            <span class="arrow">&#9656;</span>
+          </div>
+          <div class="color-details">
+            <p><strong>HEX:</strong> #A8E6CF</p>
+            <p>Цвет для позитивных элементов (например, сообщений об успехе). Добавляет ощущение свежести и контраста.</p>
+          </div>
+        </div>
+        <!-- Пример цвета: Светлый Серый -->
+        <div class="color-item">
+          <div class="color-name">
+            <span>Светлый Серый</span>
+            <span class="color-swatch" style="background-color: #F0F0F0;"></span>
+            <span class="arrow">&#9656;</span>
+          </div>
+          <div class="color-details">
+            <p><strong>HEX:</strong> #F0F0F0</p>
+            <p>Нейтральный светлый цвет для фона светлых элементов, текста на тёмном фоне или разделительных линий.</p>
+          </div>
+        </div>
+        <!-- Пример цвета: Тёмный Серый -->
+        <div class="color-item">
+          <div class="color-name">
+            <span>Тёмный Серый</span>
+            <span class="color-swatch" style="background-color: #333333;"></span>
+            <span class="arrow">&#9656;</span>
+          </div>
+          <div class="color-details">
+            <p><strong>HEX:</strong> #333333</p>
+            <p>Нейтральный тёмный цвет для текста на светлом фоне или второстепенного фона в тёмной теме.</p>
+          </div>
+        </div>
+        <!-- Пример цвета: Акцентный Голубой -->
+        <div class="color-item">
+          <div class="color-name">
+            <span>Акцентный Голубой</span>
+            <span class="color-swatch" style="background-color: #3E92CC;"></span>
+            <span class="arrow">&#9656;</span>
+          </div>
+          <div class="color-details">
+            <p><strong>HEX:</strong> #3E92CC</p>
+            <p>Дополнительный акцентный цвет (например, для ссылок или выделения выбранных элементов). Хорошо сочетается с основными цветами.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Раздел: Типографика -->
+    <section id="typography" class="section">
+      <h2>Типографика</h2>
+      <p>В дизайн-системе используются три шрифта: <strong>Montserrat</strong> для заголовков, <strong>Open Sans</strong> для основного текста и <strong>Pacifico</strong> для акцентных элементов.</p>
+      <h1>Заголовок H1 — Пример</h1>
+      <h2>Заголовок H2 — Пример</h2>
+      <h3>Заголовок H3 — Пример</h3>
+      <p>Это пример основного текста. Он набран шрифтом Open Sans, который применяется для основного содержания и длительного чтения.</p>
+      <p class="accent-text">А это пример акцентного текста, выполненного шрифтом Pacifico, чтобы выделить особый элемент дизайна.</p>
+    </section>
+
+    <!-- Раздел: Стиль элементов страницы -->
+    <section id="elements" class="section">
+      <h2>Стиль элементов</h2>
+      <p>Ниже представлены некоторые элементы страницы со стилями, определенными дизайн-системой:</p>
+      <button class="btn">Пример кнопки</button>
+      <input type="text" class="input" placeholder="Пример текстового поля" />
+      <p>Пример ссылки: <a href="#" class="link">Ссылка в тексте</a></p>
+      <blockquote>Пример цитаты: "Дизайн – это не только как выглядит и ощущается; дизайн – это как работает." <cite>– Стив Джобс</cite></blockquote>
+    </section>
+
+    <!-- Раздел: Дополнительные рекомендации -->
+    <section id="guidelines" class="section">
+      <h2>Дополнительные рекомендации</h2>
+      <ul>
+        <li>Используйте единый стиль на всех страницах приложения.</li>
+        <li>Соблюдайте иерархию заголовков и отступов для удобства чтения.</li>
+        <li>Ограничивайте ширину контента для лучшей читаемости на больших экранах.</li>
+        <li>Придерживайтесь заданных цветов и шрифтов дизайн-системы для единообразия интерфейса.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Подключение скрипта -->
+  <script src="script.js"></script>
+</body>
+</html>
