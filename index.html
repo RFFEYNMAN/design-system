@@ -1,170 +1,748 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Дизайн-система – Образец</title>
-  <!-- Подключение шрифтов Montserrat, Open Sans и Pacifico -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400&family=Pacifico&display=swap" rel="stylesheet" />
-  <!-- Подключение файла стилей -->
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Guide - Vymyshlennyj Mir</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Russo+One&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Variables */
+        :root {
+            /* Primary Colors */
+            --midnight-blue: #121D34;
+            --electric-purple: #7C4DFF;
+            --neon-tangerine: #FF7043;
+            --urban-gray: #607D8B;
+
+            /* Secondary Colors */
+            --prison-concrete: #CFD8DC;
+            --taxi-yellow: #FFEB3B;
+            --forum-green: #4CAF50;
+            --cult-red: #D32F2F;
+
+            /* Text Colors */
+            --night-black: #212121;
+            --pale-moon: #F5F5F5;
+            --faded-ink: #757575;
+
+            /* Fonts */
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Space Mono', monospace;
+            --font-accent: 'Russo One', sans-serif;
+
+            /* Spacing */
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--night-black);
+            background-color: var(--pale-moon);
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--midnight-blue);
+            color: var(--pale-moon);
+            padding: var(--spacing-lg) var(--spacing-lg);
+            text-align: center;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex: 1;
+        }
+
+        nav {
+            background-color: var(--electric-purple);
+            width: 250px;
+            min-width: 250px;
+            color: var(--pale-moon);
+            padding: var(--spacing-lg) 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            /* Центрирование содержимого меню по вертикали */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            margin-bottom: var(--spacing-md);
+        }
+
+        nav a {
+            color: var(--pale-moon);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            display: block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-left: 4px solid transparent;
+        }
+
+        nav a:hover {
+            color: var(--taxi-yellow);
+            background-color: rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--taxi-yellow);
+        }
+
+        main {
+            flex: 1;
+            padding: var(--spacing-lg);
+            background-color: var(--pale-moon);
+            overflow-y: auto;
+        }
+
+        section {
+            margin-bottom: var(--spacing-xxl);
+            padding: var(--spacing-lg);
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            background-color: var(--midnight-blue);
+            color: var(--pale-moon);
+            text-align: center;
+            padding: var(--spacing-lg);
+        }
+
+        /* Typography */
+        h1 {
+            font-family: var(--font-accent);
+            font-size: 3rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--pale-moon);
+        }
+
+        h2 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 2.25rem;
+            color: var(--midnight-blue);
+            margin-bottom: var(--spacing-md);
+            border-bottom: 3px solid var(--electric-purple);
+            padding-bottom: var(--spacing-sm);
+        }
+
+        h3 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--midnight-blue);
+            margin-bottom: var(--spacing-md);
+        }
+
+        h4 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--urban-gray);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .emphasis {
+            font-weight: 700;
+            color: var(--midnight-blue);
+        }
+
+        .quote {
+            font-family: var(--font-secondary);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--urban-gray);
+            border-left: 4px solid var(--neon-tangerine);
+            padding-left: var(--spacing-md);
+            background-color: rgba(207, 216, 220, 0.5);
+            border-radius: 4px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        /* Color Display */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .color-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-display {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .color-info {
+            padding: var(--spacing-md);
+            background-color: white;
+        }
+
+        .color-name {
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .color-value {
+            font-family: var(--font-secondary);
+            color: var(--urban-gray);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Typography Display */
+        .font-sample {
+            margin-bottom: var(--spacing-xl);
+            padding: var(--spacing-md);
+            border: 1px solid var(--prison-concrete);
+            border-radius: 8px;
+        }
+
+        .font-name {
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--midnight-blue);
+        }
+
+        .font-examples {
+            margin-top: var(--spacing-md);
+        }
+
+        .font-example {
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px dashed var(--prison-concrete);
+        }
+
+        .font-example:last-child {
+            border-bottom: none;
+        }
+
+        .font-style-name {
+            font-size: 0.9rem;
+            color: var(--faded-ink);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Button Styles */
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--electric-purple);
+            color: var(--pale-moon);
+        }
+
+        .btn-primary:hover {
+            background-color: #6a3dd9;
+        }
+
+        .btn-secondary {
+            background-color: var(--urban-gray);
+            color: var(--pale-moon);
+        }
+
+        .btn-secondary:hover {
+            background-color: #4f6b79;
+        }
+
+        .btn-character {
+            background-color: var(--taxi-yellow);
+            color: var(--night-black);
+            font-family: var(--font-accent);
+            padding: 0.5rem 1rem;
+            border-radius: 2px;
+            box-shadow: 3px 3px 0px var(--midnight-blue);
+        }
+
+        .btn-character:hover {
+            background-color: #ffd500;
+            transform: translateY(-2px);
+        }
+
+        /* Component Display */
+        .component-container {
+            margin-top: var(--spacing-lg);
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            border-top: 4px solid var(--electric-purple);
+        }
+
+        .character-profile {
+            background-color: var(--prison-concrete);
+            border-left: 6px solid var(--neon-tangerine);
+            padding: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            border-radius: 0px 4px 4px 0px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            nav {
+                width: 100%;
+                height: auto;
+                position: static;
+                justify-content: center;
+            }
+            
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: var(--spacing-sm);
+            }
+            
+            nav a {
+                border-left: none;
+                border-bottom: 4px solid transparent;
+            }
+            
+            nav a:hover {
+                border-left: none;
+                border-bottom: 4px solid var(--taxi-yellow);
+            }
+            
+            .color-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Верхняя панель для мобильного отображения: содержит кнопку меню и название сайта -->
-  <header class="topbar">
-    <button class="menu-toggle">☰ Меню</button>
-    <span class="sitename">Дизайн-Система</span>
-  </header>
-
-  <!-- Боковое меню навигации (фиксированное слева) -->
-  <aside class="sidebar">
-    <nav class="menu">
-      <ul>
-        <li><a href="#" data-target="home" class="active">Главная</a></li>
-        <li><a href="#" data-target="colors">Цветовая палитра</a></li>
-        <li><a href="#" data-target="typography">Типографика</a></li>
-        <li><a href="#" data-target="elements">Стиль элементов</a></li>
-        <li><a href="#" data-target="guidelines">Рекомендации</a></li>
-      </ul>
-    </nav>
-  </aside>
-
-  <!-- Основной контент страницы -->
-  <main>
-    <!-- Главная страница: краткое описание сайта -->
-    <section id="home" class="section active">
-      <h1>Дизайн-Система Проекта</h1>
-      <p>Добро пожаловать в хранилище стилей. Этот сайт содержит рекомендации по дизайну: цветовая палитра, типографика, стили элементов и общие советы для единого оформления приложения.</p>
-      <!-- Акцентный элемент с шрифтом Pacifico для примера -->
-      <p class="accent-text">Пример акцентного текста.</p>
-    </section>
-
-    <!-- Раздел: Цветовая палитра -->
-    <section id="colors" class="section">
-      <h2>Цветовая палитра</h2>
-      <p>Ниже представлен список основных цветов и их применение. Нажмите на название цвета для подробностей.</p>
-      <div class="color-list">
-        <!-- Пример цвета: Главный Красный -->
-        <div class="color-item">
-          <div class="color-name">
-            <span>Главный Красный</span>
-            <span class="color-swatch" style="background-color: #D72638;"></span>
-            <span class="arrow">&#9656;</span> <!-- стрелка, указывающая на раскрытие (▶) -->
-          </div>
-          <div class="color-details">
-            <p><strong>HEX:</strong> #D72638</p>
-            <p>Основной брендовый цвет. Используется для акцентирования главных элементов интерфейса и важных действий пользователя.</p>
-          </div>
-        </div>
-        <!-- Пример цвета: Ночной Синий -->
-        <div class="color-item">
-          <div class="color-name">
-            <span>Ночной Синий</span>
-            <span class="color-swatch" style="background-color: #1B1B3A;"></span>
-            <span class="arrow">&#9656;</span>
-          </div>
-          <div class="color-details">
-            <p><strong>HEX:</strong> #1B1B3A</p>
-            <p>Фоновый цвет для тёмных областей, придающий интерфейсу стиль Obsidian. Идеален для фона страниц и панелей.</p>
-          </div>
-        </div>
-        <!-- Пример цвета: Ярко-Оранжевый -->
-        <div class="color-item">
-          <div class="color-name">
-            <span>Ярко-Оранжевый</span>
-            <span class="color-swatch" style="background-color: #FF9F1C;"></span>
-            <span class="arrow">&#9656;</span>
-          </div>
-          <div class="color-details">
-            <p><strong>HEX:</strong> #FF9F1C</p>
-            <p>Вторичный акцентный цвет. Используется для привлечения внимания к вспомогательным действиям или важной информации.</p>
-          </div>
-        </div>
-        <!-- Пример цвета: Мятный -->
-        <div class="color-item">
-          <div class="color-name">
-            <span>Мятный</span>
-            <span class="color-swatch" style="background-color: #A8E6CF;"></span>
-            <span class="arrow">&#9656;</span>
-          </div>
-          <div class="color-details">
-            <p><strong>HEX:</strong> #A8E6CF</p>
-            <p>Цвет для позитивных элементов (например, сообщений об успехе). Добавляет ощущение свежести и контраста.</p>
-          </div>
-        </div>
-        <!-- Пример цвета: Светлый Серый -->
-        <div class="color-item">
-          <div class="color-name">
-            <span>Светлый Серый</span>
-            <span class="color-swatch" style="background-color: #F0F0F0;"></span>
-            <span class="arrow">&#9656;</span>
-          </div>
-          <div class="color-details">
-            <p><strong>HEX:</strong> #F0F0F0</p>
-            <p>Нейтральный светлый цвет для фона светлых элементов, текста на тёмном фоне или разделительных линий.</p>
-          </div>
-        </div>
-        <!-- Пример цвета: Тёмный Серый -->
-        <div class="color-item">
-          <div class="color-name">
-            <span>Тёмный Серый</span>
-            <span class="color-swatch" style="background-color: #333333;"></span>
-            <span class="arrow">&#9656;</span>
-          </div>
-          <div class="color-details">
-            <p><strong>HEX:</strong> #333333</p>
-            <p>Нейтральный тёмный цвет для текста на светлом фоне или второстепенного фона в тёмной теме.</p>
-          </div>
-        </div>
-        <!-- Пример цвета: Акцентный Голубой -->
-        <div class="color-item">
-          <div class="color-name">
-            <span>Акцентный Голубой</span>
-            <span class="color-swatch" style="background-color: #3E92CC;"></span>
-            <span class="arrow">&#9656;</span>
-          </div>
-          <div class="color-details">
-            <p><strong>HEX:</strong> #3E92CC</p>
-            <p>Дополнительный акцентный цвет (например, для ссылок или выделения выбранных элементов). Хорошо сочетается с основными цветами.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Раздел: Типографика -->
-    <section id="typography" class="section">
-      <h2>Типографика</h2>
-      <p>В дизайн-системе используются три шрифта: <strong>Montserrat</strong> для заголовков, <strong>Open Sans</strong> для основного текста и <strong>Pacifico</strong> для акцентных элементов.</p>
-      <h1>Заголовок H1 — Пример</h1>
-      <h2>Заголовок H2 — Пример</h2>
-      <h3>Заголовок H3 — Пример</h3>
-      <p>Это пример основного текста. Он набран шрифтом Open Sans, который применяется для основного содержания и длительного чтения.</p>
-      <p class="accent-text">А это пример акцентного текста, выполненного шрифтом Pacifico, чтобы выделить особый элемент дизайна.</p>
-    </section>
-
-    <!-- Раздел: Стиль элементов страницы -->
-    <section id="elements" class="section">
-      <h2>Стиль элементов</h2>
-      <p>Ниже представлены некоторые элементы страницы со стилями, определенными дизайн-системой:</p>
-      <button class="btn">Пример кнопки</button>
-      <input type="text" class="input" placeholder="Пример текстового поля" />
-      <p>Пример ссылки: <a href="#" class="link">Ссылка в тексте</a></p>
-      <blockquote>Пример цитаты: "Дизайн – это не только как выглядит и ощущается; дизайн – это как работает." <cite>– Стив Джобс</cite></blockquote>
-    </section>
-
-    <!-- Раздел: Дополнительные рекомендации -->
-    <section id="guidelines" class="section">
-      <h2>Дополнительные рекомендации</h2>
-      <ul>
-        <li>Используйте единый стиль на всех страницах приложения.</li>
-        <li>Соблюдайте иерархию заголовков и отступов для удобства чтения.</li>
-        <li>Ограничивайте ширину контента для лучшей читаемости на больших экранах.</li>
-        <li>Придерживайтесь заданных цветов и шрифтов дизайн-системы для единообразия интерфейса.</li>
-      </ul>
-    </section>
-  </main>
-
-  <!-- Подключение скрипта -->
-  <script src="script.js"></script>
-</body>
-</html>
+    <header id="top">
+        <h1>Дизайн-система "Вымышленный Мир"</h1>
+        <p>Руководство по стилю для серии сайтов</p>
+    </header>
+    
+    <div class="content-wrapper">
+        <nav>
+            <ul>
+                <li><a href="#top">Главная</a></li>
+                <li><a href="#colors">Цвета</a></li>
+                <li><a href="#typography">Типографика</a></li>
+                <li><a href="#text-styles">Стили текста</a></li>
+                <li><a href="#buttons">Кнопки</a></li>
+                <li><a href="#components">Компоненты</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <section id="colors">
+                <h2>Цветовая палитра</h2>
+                <p>Эта палитра отражает характер и атмосферу нашего вымышленного мира.</p>
+                
+                <h3>Основные цвета</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #121D34;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Midnight Blue</div>
+                            <div class="color-value">#121D34</div>
+                            <div class="color-description">Для фона и тёмных элементов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #7C4DFF;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Electric Purple</div>
+                            <div class="color-value">#7C4DFF</div>
+                            <div class="color-description">Для основных действий и выделений</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #FF7043;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Neon Tangerine</div>
+                            <div class="color-value">#FF7043</div>
+                            <div class="color-description">Для акцентов и важных элементов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #607D8B;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Urban Gray</div>
+                            <div class="color-value">#607D8B</div>
+                            <div class="color-description">Для нейтральных элементов и контейнеров</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Дополнительные цвета</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #CFD8DC;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Prison Concrete</div>
+                            <div class="color-value">#CFD8DC</div>
+                            <div class="color-description">Светлый фон (отсылка к персонажу Севы)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #FFEB3B;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Taxi Yellow</div>
+                            <div class="color-value">#FFEB3B</div>
+                            <div class="color-description">Акцентный цвет (отсылка к персонажу Жеки)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #4CAF50;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Forum Green</div>
+                            <div class="color-value">#4CAF50</div>
+                            <div class="color-description">Успешные действия, элементы форума (отсылка к форуму Жана)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #D32F2F;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Cult Red</div>
+                            <div class="color-value">#D32F2F</div>
+                            <div class="color-description">Предупреждения, тема сайта секты</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Цвета текста</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #212121;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Night Black</div>
+                            <div class="color-value">#212121</div>
+                            <div class="color-description">Основной цвет текста</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #F5F5F5;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Pale Moon</div>
+                            <div class="color-value">#F5F5F5</div>
+                            <div class="color-description">Текст на тёмном фоне</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card">
+                        <div class="color-display" style="background-color: #757575;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Faded Ink</div>
+                            <div class="color-value">#757575</div>
+                            <div class="color-description">Второстепенный текст, подписи</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="typography">
+                <h2>Типографика</h2>
+                <p>Подбор шрифтов отражает уникальность персонажей и мира, сочетая читаемость и характер.</p>
+                
+                <div class="font-sample">
+                    <div class="font-name">Montserrat (Основной шрифт)</div>
+                    <p>Универсальный шрифт без засечек для основного текста и элементов интерфейса.</p>
+                    
+                    <div class="font-examples">
+                        <div class="font-example">
+                            <div class="font-style-name">Regular (400)</div>
+                            <p style="font-family: 'Montserrat'; font-weight: 400;">
+                                The quick brown fox jumps over the lazy dog. 1234567890<br>
+                                Съешь же ещё этих мягких французских булок, да выпей чаю.
+                            </p>
+                        </div>
+                        
+                        <div class="font-example">
+                            <div class="font-style-name">Bold (700)</div>
+                            <p style="font-family: 'Montserrat'; font-weight: 700;">
+                                The quick brown fox jumps over the lazy dog. 1234567890<br>
+                                Съешь же ещё этих мягких французских булок, да выпей чаю.
+                            </p>
+                        </div>
+                        
+                        <div class="font-example">
+                            <div class="font-style-name">Black (900)</div>
+                            <p style="font-family: 'Montserrat'; font-weight: 900;">
+                                The quick brown fox jumps over the lazy dog. 1234567890<br>
+                                Съешь же ещё этих мягких французских булок, да выпей чаю.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="font-sample">
+                    <div class="font-name">Space Mono (Дополнительный шрифт)</div>
+                    <p>Моноширинный шрифт с характером для кода, цитат и специальных разделов.</p>
+                    
+                    <div class="font-examples">
+                        <div class="font-example">
+                            <div class="font-style-name">Regular (400)</div>
+                            <p style="font-family: 'Space Mono'; font-weight: 400;">
+                                The quick brown fox jumps over the lazy dog. 1234567890<br>
+                                Съешь же ещё этих мягких французских булок, да выпей чаю.
+                            </p>
+                        </div>
+                        
+                        <div class="font-example">
+                            <div class="font-style-name">Italic</div>
+                            <p style="font-family: 'Space Mono'; font-style: italic;">
+                                The quick brown fox jumps over the lazy dog. 1234567890<br>
+                                Съешь же ещё этих мягких французских булок, да выпей чаю.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="font-sample">
+                    <div class="font-name">Russo One (Акцентный шрифт)</div>
+                    <p>Жирный, необычный шрифт для заголовков сайтов и важных элементов.</p>
+                    
+                    <div class="font-examples">
+                        <div class="font-example">
+                            <div class="font-style-name">Regular (400)</div>
+                            <p style="font-family: 'Russo One'; font-weight: 400;">
+                                The quick brown fox jumps over the lazy dog. 1234567890<br>
+                                Съешь же ещё этих мягких французских булок, да выпей чаю.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="text-styles">
+                <h2>Стили текста</h2>
+                <p>Определенные стили для различных элементов страницы.</p>
+                
+                <h3>Заголовки</h3>
+                
+                <div class="component-container">
+                    <h4>Главный заголовок (h1)</h4>
+                    <div class="card">
+                        <h1 style="color: var(--midnight-blue);">Жека Вишня и такси-приключения</h1>
+                        <div class="font-style-name">
+                            Font: Russo One<br>
+                            Size: 3rem<br>
+                            Color: Midnight Blue (#121D34)<br>
+                            Margin-bottom: 1.5rem
+                        </div>
+                    </div>
+                    
+                    <h4>Подзаголовок (h2)</h4>
+                    <div class="card">
+                        <h2>История Севы Восточного</h2>
+                        <div class="font-style-name">
+                            Font: Montserrat Bold<br>
+                            Size: 2.25rem<br>
+                            Color: Midnight Blue (#121D34)<br>
+                            Margin-bottom: 1rem<br>
+                            Border-bottom: 3px solid Electric Purple (#7C4DFF)
+                        </div>
+                    </div>
+                    
+                    <h4>Заголовок раздела (h3)</h4>
+                    <div class="card">
+                        <h3>Пиццерия Жана "Форумные деликатесы"</h3>
+                        <div class="font-style-name">
+                            Font: Montserrat Bold<br>
+                            Size: 1.75rem<br>
+                            Color: Midnight Blue (#121D34)<br>
+                            Margin-bottom: 0.75rem
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Основной текст</h3>
+                
+                <div class="component-container">
+                    <h4>Обычный текст (p)</h4>
+                    <div class="card">
+                        <p>Наша вымышленная вселенная полна невероятных персонажей, каждый из которых имеет свою уникальную историю и характер. От таксиста Жеки Вишни до заключенного Севы Восточного — все они стали частью большого сообщества.</p>
+                        <div class="font-style-name">
+                            Font: Montserrat Regular<br>
+                            Size: 1rem<br>
+                            Line-height: 1.6<br>
+                            Color: Night Black (#212121)<br>
+                            Margin-bottom: 1rem
+                        </div>
+                    </div>
+                    
+                    <h4>Выделенный текст</h4>
+                    <div class="card">
+                        <p>Наше сообщество создало <span class="emphasis">целый мир с собственными правилами</span>, историей и межличностными отношениями.</p>
+                        <div class="font-style-name">
+                            Font: Montserrat Bold<br>
+                            Size: 1rem<br>
+                            Color: Midnight Blue (#121D34)
+                        </div>
+                    </div>
+                    
+                    <h4>Цитата/Речь персонажа</h4>
+                    <div class="card">
+                        <div class="quote">
+                            "Ты знаешь, кто я такой? Я Жека Вишня, лучший таксист в этом городе! Садись, прокачу с ветерком, только не забудь пристегнуться — у нас будет настоящее приключение!"
+                        </div>
+                        <div class="font-style-name">
+                            Font: Space Mono Italic<br>
+                            Size: 1.1rem<br>
+                            Color: Urban Gray (#607D8B)<br>
+                            Border-left: 4px solid Neon Tangerine (#FF7043)<br>
+                            Padding-left: 1rem<br>
+                            Background: Prison Concrete (#CFD8DC) at 50% opacity<br>
+                            Border-radius: 4px
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="buttons">
+                <h2>Кнопки</h2>
+                <p>Различные стили кнопок для разных действий.</p>
+                
+                <div class="component-container">
+                    <h4>Основная кнопка</h4>
+                    <div class="card">
+                        <div class="buttons-container">
+                            <button class="btn btn-primary">Войти на форум</button>
+                        </div>
+                        <div class="font-style-name">
+                            Background: Electric Purple (#7C4DFF)<br>
+                            Text Color: Pale Moon (#F5F5F5)<br>
+                            Font: Montserrat Bold<br>
+                            Padding: 0.75rem 1.5rem<br>
+                            Border-radius: 4px<br>
+                            Transition: background-color 0.3s ease
+                        </div>
+                    </div>
+                    
+                    <h4>Вторичная кнопка</h4>
+                    <div class="card">
+                        <div class="buttons-container">
+                            <button class="btn btn-secondary">Подробнее</button>
+                        </div>
+                        <div class="font-style-name">
+                            Background: Urban Gray (#607D8B)<br>
+                            Text Color: Pale Moon (#F5F5F5)<br>
+                            Font: Montserrat Bold<br>
+                            Padding: 0.75rem 1.5rem<br>
+                            Border-radius: 4px<br>
+                            Transition: background-color 0.3s ease
+                        </div>
+                    </div>
+                    
+                    <h4>Кнопка персонажа</h4>
+                    <div class="card">
+                        <div class="buttons-container">
+                            <button class="btn btn-character">Вызвать такси</button>
+                        </div>
+                        <div class="font-style-name">
+                            Background varies by character (e.g., Taxi Yellow for Zheka)<br>
+                            Text Color: Night Black or Pale Moon depending on background<br>
+                            Font: Russo One<br>
+                            Padding: 0.5rem 1rem<br>
+                            Border-radius: 2px<br>
+                            Box-shadow: 3px 3px 0px #121D34
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="components">
+                <h2>Компоненты</h2>
+                <p>Стили для основных компонентов, используемых на сайтах.</p>
+                
+                <div class="component-container">
+                    <h4>Карточка</h4>
+                    <div class="card">
+                        <h3>Заголовок карточки</h3>
+                        <p>Это пример содержимого карточки. Карточки могут использоваться для различных типов контента, от новостей до информации о персонажах.</p>
+                        <button class="btn btn-primary">Подробнее</button>
+                        
+                        <div class="font-style-name" style="margin-top: 20px;">
+                            Background: White<br>
+                            Border-radius: 8px<br>
+                            Box-shadow: 0px 4px 8px rgba(0,0,0,0.1)<br>
+                            Padding:
